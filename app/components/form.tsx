@@ -4,6 +4,9 @@ import { useTransition, useRef, useOptimistic } from 'react'
 import { addTodo } from '../actions/todoActions'
 import TodosComponent from './TodosComponent'
 import { Todo } from '@prisma/client'
+import { toast } from 'react-hot-toast'
+
+import { TodoSchema } from '../lib/type'
 
 export default function Form({ todos }: { todos: Todo[] }) {
   const [isPending, startTransition] = useTransition()
@@ -20,15 +23,37 @@ export default function Form({ todos }: { todos: Todo[] }) {
   // 直接在form的action属性中使用服务器动作，Next.js会自动处理表单提交
   const formAction = async (formData: FormData) => {
     const content = formData.get('content') as string
-    if (!content?.trim()) return
+    //if (!content?.trim()) return
+    const result = TodoSchema.safeParse({ content })
+    if(!result.success){
+      let errorMessage = ''
+      result.error.issues.map((issue) => {
+        errorMessage = errorMessage + (issue.path[0] as string) + ': ' + issue.message + '. '
+      })
+      toast.error(errorMessage)
+      return 
+    }
+
+    const newTodo = result.data
+   
 
     // ✅ 使用ref重置表单，避免直接操作DOM
     formRef.current?.reset()
 
     startTransition(async () => {
       try {
-        setOptimisticTodos( { id: Date.now(), content } as Todo)
-        await addTodo(content)
+        setOptimisticTodos({ id: Date.now(), content } as Todo)
+
+      
+        const response = await addTodo(newTodo)
+        if(response?.error){
+          toast.error(response?.error)
+          return 
+        }
+
+        
+
+        toast.success('添加成功')
         // 服务端会自动刷新，客户端什么都不用做
       } catch (error) {
         console.error('Failed to add todo:', error)
@@ -45,7 +70,7 @@ export default function Form({ todos }: { todos: Todo[] }) {
           placeholder="添加新的todo..."
           className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
           disabled={isPending}
-          required
+        //required
         />
         <button
           type="submit"
