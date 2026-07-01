@@ -5,6 +5,7 @@ import App from "./components/App";
 import FormWithoutReactHookForm from "./components/FormWithoutReactHookForm";
 import FormWithReactHookForm from "./components/FormWithReactHookForm";
 import FormWithReactHookFormAndZod from "./components/FormWithReactHookFormAndZod";
+import Logo from "./components/Logo";
 
 type Todo = {
   id: number
@@ -25,6 +26,7 @@ export default async function Home() {
       {/* <App /> */}
       {/* <FormWithoutReactHookForm /> */}
       {/* <FormWithReactHookForm /> */}
+      <Logo />
       <FormWithReactHookFormAndZod />
       
     </div>
