@@ -2,6 +2,9 @@
 import Form from "./components/form";
 import { getTodos } from './actions/todoActions';
 import App from "./components/App";
+import FormWithoutReactHookForm from "./components/FormWithoutReactHookForm";
+import FormWithReactHookForm from "./components/FormWithReactHookForm";
+import FormWithReactHookFormAndZod from "./components/FormWithReactHookFormAndZod";
 
 type Todo = {
   id: number
@@ -19,7 +22,10 @@ export default async function Home() {
       <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">Todo List</h1>
 
       {/* <Form todos={todos} /> */}
-      <App />
+      {/* <App /> */}
+      {/* <FormWithoutReactHookForm /> */}
+      {/* <FormWithReactHookForm /> */}
+      <FormWithReactHookFormAndZod />
       
     </div>
   );
