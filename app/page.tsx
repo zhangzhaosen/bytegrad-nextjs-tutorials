@@ -1,6 +1,8 @@
 
 import Form from "./components/form";
 import { getTodos } from './actions/todoActions';
+import App from "./components/App";
+
 type Todo = {
   id: number
   content: string
@@ -16,7 +18,8 @@ export default async function Home() {
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black min-h-screen py-12">
       <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">Todo List</h1>
 
-      <Form todos={todos} />
+      {/* <Form todos={todos} /> */}
+      <App />
       
     </div>
   );
