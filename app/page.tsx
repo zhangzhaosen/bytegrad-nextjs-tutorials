@@ -6,6 +6,8 @@ import FormWithoutReactHookForm from "./components/FormWithoutReactHookForm";
 import FormWithReactHookForm from "./components/FormWithReactHookForm";
 import FormWithReactHookFormAndZod from "./components/FormWithReactHookFormAndZod";
 import Logo from "./components/Logo";
+import ReactHookForm from "./components/ReactHookForm";
+import FileStack from "./components/FileStack";
 
 type Todo = {
   id: number
@@ -26,8 +28,10 @@ export default async function Home() {
       {/* <App /> */}
       {/* <FormWithoutReactHookForm /> */}
       {/* <FormWithReactHookForm /> */}
-      <Logo />
-      <FormWithReactHookFormAndZod />
+      {/* <Logo />
+      <FormWithReactHookFormAndZod /> */}
+      {/* <ReactHookForm /> */}
+      <FileStack />
       
     </div>
   );

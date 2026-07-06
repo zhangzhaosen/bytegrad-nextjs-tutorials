@@ -14,6 +14,7 @@ export default function FormWithReactHookFormAndZod() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    watch,
     getValues, 
     setError,
   } = useForm<SignUpSchema>({
@@ -59,6 +60,12 @@ export default function FormWithReactHookFormAndZod() {
     }
     reset()
   }
+
+  console.log('errors, ', errors)
+  
+  register('firstName', {
+    required: 'please input first name',
+  })
 
 
   return (
