@@ -10,3 +10,10 @@ model Todo {
   id      Int    @id @default(autoincrement())
   content String
 }
+
+model Post {
+  id          Int      @id @default(autoincrement())
+  create_user String   // 创建者
+  content     String   // 帖子内容
+  datetime    DateTime @default(now()) // 创建时间
+}
