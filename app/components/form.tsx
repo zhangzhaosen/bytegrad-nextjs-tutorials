@@ -46,10 +46,10 @@ export default function Form({ todos }: { todos: Todo[] }) {
 
       
         const response = await addTodo(newTodo)
-        if(response?.error){
-          toast.error(response?.error)
-          return 
-        }
+        // if(response?.error){
+        //   toast.error(response?.error)
+        //   return 
+        // }
 
         
 

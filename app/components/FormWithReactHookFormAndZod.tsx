@@ -63,9 +63,9 @@ export default function FormWithReactHookFormAndZod() {
 
   console.log('errors, ', errors)
   
-  register('firstName', {
-    required: 'please input first name',
-  })
+  // register('firstName', {
+  //   required: 'please input first name',
+  // })
 
 
   return (

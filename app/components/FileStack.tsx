@@ -1,4 +1,8 @@
+'use client'
+import {PickerOverlay} from 'filestack-react'
+import { useState } from 'react';
 export default function FileStack() {
+  const [showPiker, setShowPicker] = useState(false)
   return (
     <main className="h-full flex flex-col pt-25 items-center">
       <h1 className="text-4xl font-bold mb-2">
@@ -10,6 +14,20 @@ export default function FileStack() {
         <br />
         cool polaroid in return!
       </p>
+      {
+        showPiker && (
+          <PickerOverlay 
+          apikey={process.env.FILESTACK_API_KEY}
+          onUploadDone={(file)=>{
+            console.log('file, ', file)
+            setShowPicker(false)
+          }}
+          
+
+         
+          />
+        )
+      }
 
       <button
         className="
@@ -21,6 +39,9 @@ export default function FileStack() {
           px-4
           rounded
         "
+        onClick={()=>{
+          setShowPicker(true)
+        }}
       >
         Upload file
       </button>

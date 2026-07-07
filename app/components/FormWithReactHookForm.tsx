@@ -38,6 +38,7 @@ export default function FormWithReactHookForm() {
       />
       {
         errors.email && (
+          ///@ts-ignore
           <p className="text-red-500 text-sm">{errors.email.message}</p>
         )
       }
@@ -56,6 +57,7 @@ export default function FormWithReactHookForm() {
       />
       {
         errors.password && (
+           ///@ts-ignore
           <p className="text-red-500 text-sm">{errors.password.message}</p>
         )
       }
@@ -71,7 +73,8 @@ export default function FormWithReactHookForm() {
       />
       {
         errors.confirmPassword && (
-          <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>
+           ///@ts-ignore
+          <p className="text-red-500 text-sm">{errors?.confirmPassword?.message}</p>
         )
       }
 
